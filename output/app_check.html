@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Customs — App Check</title>
+  <style>
+    :root { color: #182b49; background: #f7f6f1; font-family: Georgia, serif; }
+    body { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+    h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); margin: 0 0 8px; }
+    .intro { color: #536174; font: 16px/1.6 Arial, sans-serif; max-width: 680px; }
+    section { margin-top: 44px; padding-top: 28px; border-top: 2px solid #d5dde5; }
+    h2 { margin: 0 0 8px; font-size: 1.7rem; }
+    .caption { color: #536174; font: 15px/1.55 Arial, sans-serif; margin: 0 0 18px; }
+    figure { margin: 0; background: white; padding: 12px; border: 1px solid #d5dde5; box-shadow: 0 10px 28px #182b4914; }
+    img { display: block; width: 100%; height: auto; }
+    code { color: #00356b; }
+  </style>
+</head>
+<body>
+  <h1>Campus Customs app check</h1>
+  <p class="intro">Evidence captured from the running local React + FastAPI app. The first two checks call the live chat API; product prices and inventory are read from <code>data/campus_customs.db</code>.</p>
+
+  <section>
+    <h2>1. Inventory check through chat</h2>
+    <p class="caption">The shopper asks about Basic Hoodie Big Yale stock. The concierge reports the database-backed total and breaks it down by size: 60 total, with XS 15, S 5, M 5, L 8, XL 2, and XXL 25. No quantity is invented in the UI.</p>
+    <figure><img src="app_check_images/inventory-chat.png" alt="Campus Customs chat showing inventory quantities by size"></figure>
+  </section>
+
+  <section>
+    <h2>2. Category search results become product cards</h2>
+    <p class="caption">After “What hoodies do you have?”, the agent response supplies structured matches. The chat widget renders six clickable cards with catalogue images, names, descriptions, and database prices; clicking a card uses the same product-detail route as the Products page.</p>
+    <figure><img src="app_check_images/hoodie-search.png" alt="Campus Customs chat showing six hoodie product cards"></figure>
+  </section>
+
+  <section>
+    <h2>3. Problem 9 usability feature: shopping cart empty state</h2>
+    <p class="caption">The cart opens as a focused drawer and explains what to do when it is empty. This gives shoppers immediate orientation instead of leaving a blank panel, while keeping the collection visible behind it.</p>
+    <figure><img src="app_check_images/cart-empty-state.png" alt="Campus Customs shopping cart drawer showing a helpful empty state"></figure>
+  </section>
+</body>
+</html>

@@ -1,0 +1,113 @@
+# AI Prompt Log — Homework 4
+
+This is a human-readable log of the messages I type to my vibe coder while completing Homework 4 (Campus Customs Shop + Chatbot). It is documentation only. It is not a runtime prompt file, is not parsed by scripts, and is separate from any `prompts/` directory.
+
+Each problem has its own section with the problem number and title. Each section records at least one prompt in my own words. Where I needed a follow-up, it records the follow-up and one sentence on what the first prompt was missing.
+
+## Setup — Prompt-log instructions
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Please make sure that this homework is set up like the past homeworks with the log and everything" | Compared HW 4 with the established HW 2/HW 3 layout and added `README.md`, `requirements.txt`, and the standard `assets/`, `data/`, `output/`, and `prompts/` directories with placeholders. | — | The existing `.venv`, `AI_prompts.md`, and Problem 2 analysis were preserved. |
+
+## Problem 1 — Vibe coder prompts
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Okejj create AI_prompts.md at the start of the assignment and keep it updated as I work" | Created this log in `HW 4/` in the same table format as Homework 3, with one section per problem (number + title). Also created the `HW 4/.venv` virtual environment. | — | From here on, every prompt I type gets a row in the section for the problem it belongs to. |
+
+## Problem 2 — Analyze the database
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "look at the database data/campus_customs.db and understand the fields of each table" | Could not find `data/campus_customs.db` in `HW 4/` or anywhere else on my machine. The Problem 2 page refers to the file but doesn't link it, so the vibe coder asked where to get it. | "Problem2" | The database was then supplied at `/Users/marydimitrov/Downloads/data 2/campus_customs.db`; its schema and contents were documented in `database_analysis.md`. |
+| 2 | 2026-10-04 | "look at the database data/campus_customs.db and understand the fields of each table" | Copied the supplied database into `HW 4/data/campus_customs.db`, verified the four application tables, and documented their fields and relationships in `database_analysis.md`. | — | Password-hash values were not copied into documentation or exposed in output. |
+| 3 | 2026-10-04 | "unzip it" | Inspected `data (4).zip` and extracted its contents into `HW 4/data/`: the database and 102 product images. Existing project files were preserved. | — | — |
+| 4 | 2026-10-04 | "start the file output/hardness.md write down each table and its fields and one short line on why each field matters for the shop or the chat bot. I will keep growing this haness file in later problems (models, tools, safety, specs)" | Created `output/hardness.md` with all application tables, fields, field-level rationale, relationships, and JSON storage notes. | — | The filename `hardness.md` was followed exactly as requested so it can be expanded in later problems. |
+
+## Problem 3 — Build the Campus Customs website
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "now we will do Problem 3: Build the Campus Customs website" | Began the Problem 3 section and reviewed the Dash chatbot project requirements: server-side Portkey integration, session chat state, accessible input behavior, responsive layout, and a professional pink gemstone-inspired design. | — | The title starts the problem; detailed website requirements are still to be supplied. |
+| 2 | 2026-10-04 | "in Problem 3 -- scafflord a react + vite + Typescript front end for Campus Customs. Put a nav bar at the top that links to the main pages: home, products, about us, log in, Create account. Pull Campus Customs-style wording from yalebulldogblue.com for Home and About Us, but write these pages in your own voice (Yale SOM grad student, use to be a journalist) (do not copy the site text) Build a normal create-account/login flow. Create Account: first name, last name, email, password (confirm password would be great) Login in: email and password. New accounts go into the users table. Make sure to store passowrds securely so that both human and AI hackers cannot access them" | Scaffolded a React + Vite + TypeScript frontend with Home, Products, About Us, Login, and Create Account pages, plus a server-side Python API for products and authentication. Added original editorial copy, responsive styling, and salted scrypt password hashing. | — | Product images are available under `frontend/public/data/products/`; raw passwords and password hashes are never returned to the client. |
+| 3 | 2026-10-04 | "on the products page show product images from the cataloge (use the image paths in the database) with basic product info (name, price, short description). Make each product open a single-item page (large image on one side full product text on the other -- description, rpice, sizes/stocks when you have them). Clicking a card on the prodcuts shoudl easily take the shopper there. Add a chat interface in the bottom right of the site ( a floating chat panel is fine) it doesn't need to talk to an agent yet -- a stub that will call your backend later is enough for this probnlem. You will need a small API soon to read the database. It's fine to start a simpel FastAPI app in the backend/main.py just to serve produce and images then grow it into the backend in problem 5" | Added database-backed product cards, clickable single-product detail views with inventory availability, a floating local chat stub, and `backend/main.py` FastAPI catalogue endpoints. | — | Product image paths come from `catalogue.image_file_path`; the chat intentionally does not call an agent yet. |
+
+## Problem 4 — Create account and login
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Ok Problem 4: Create account and login" | Verified the existing create-account and login flow against a temporary copy of the SQLite database, including validation, secure password storage, successful login, wrong-password rejection, and duplicate-email rejection. | — | The supplied seed database was not changed by testing. |
+| 2 | 2026-10-04 | "the seed database already has. a test user you can use while buidling. Email: test@campuscustomes.yale.edu Password: password -- confirm you can log in as that use and that a brand-new accoutn you create also works. Update output/harness.md with how auth works (what you store for a user and how passowords are protected)" | Checked the supplied seed credentials and verified a new-account flow on a temporary database copy. The supplied email does not match the database (`campuscustoms`, not `campuscustomes`), and `password` does not validate against the stored seed hash. Created `output/harness.md` with the authentication design and verification results. | — | Seed login remains unconfirmed pending corrected credentials; no seed data was modified. |
+| 3 | 2026-10-04 | "wait why cant you confirm that you can log in as that user? I think I spelled it wrong at first. They should all be test@campuscustomss.yale.edu" | Checked all three spellings. Only `test@campuscustoms.yale.edu` exists in the database; the `customes` and `customss` variants do not. The provided password still does not validate for the existing record. | — | The database currently has one `s` after `custom`, not two. |
+| 4 | 2026-10-04 | "okay well confirm that I can log in as that usedr and that a brand new account I create also works. Update output/harness.md with how auth works (what you store for a user and how passwords are protected)" | Re-ran verification: the exact seed email exists but the supplied password does not authenticate; a brand-new account authenticated successfully in a temporary database copy. Updated `output/harness.md` with the final results and authentication design. | — | The seed database was not modified. |
+| 5 | 2026-10-04 | "The password is password" | Identified the seed hash as the legacy PBKDF2-SHA256 format with 120,000 iterations. Added compatibility verification and automatic migration to scrypt after successful login. | — | New accounts continue to use scrypt immediately. |
+
+## Problem 5 — Shop chatbot agent
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "build the shop chatbot as a PydanticAI agent behind FastAPI plugged into your front-end chat widget. Put the API app in backend/main.py -- that is the file you run with Uvicorn. Keep the agent as these four files next to it (same thing as HW3): backend/prompts/prompt.md -- system prompt (grow this same file later) backend/agent.py -- agent entry/wiring backends/tools.py -- tools the agent can call backend/models.py -- Pydantic/PydanticAI structured types in main.py expose a chat route so a message from the website returns a reply from the agent (and whatever else you need for products/auth) you will need your AI model API key for the agent" | Added the four-file PydanticAI agent layout, Portkey model wiring, SQLite catalogue tools, structured chat output, FastAPI `/api/chat`, and frontend chat-widget integration. Added dependency installation and verified the API routes, auth flow, agent construction, and frontend build. | — | The live chat request depends on a working `PORTKEY_API_KEY` and upstream Portkey connection; credentials remain server-side and were never printed. |
+| 2 | 2026-10-04 | "slay. Put campus customs voice and safety basics into prompts/prompt.md (I will expand tools and safety later). Start or update types in models.py for chat replies/product cards as needed. In output/harness.md note how the front end talks to FastAPI and how the agent is loaded (prompt file + model). Make sure the backends runs from the backend/folder like this: uvicorn main:app --reload --port 8000" | Added Campus Customs voice and baseline safety rules to the system prompt, documented the frontend-to-FastAPI-to-agent flow in `output/harness.md`, changed Vite's proxy to port 8000, and added direct-import compatibility for the exact Uvicorn command from `backend/`. | — | — |
+
+## Problem 6
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Okay that was all problem 5 now we will do problem 6" | Marked Problem 5 complete and started the Problem 6 section. | — | The Problem 6 requirements are still to be supplied. |
+| 2 | 2026-10-04 | "Please give the agent tools that look up real information from campus_customs.db -product description - price - how many are in stock (by size when a customer asks) The agent must use the database -- it should not invent prices or quantities. If a size is out of stock, say so clearly" | Added database-backed `search_products`, `get_product_details`, and `check_stock` tools; required tool lookup in the system prompt; included all size quantities and explicit out-of-stock labels in structured product details. | — | — |
+| 3 | 2026-10-04 | "expand prompts/prompt.md so the agent knows to call these tools for price and stock questions. add or update return types in models.py in output/harness.md list each tool and explain which model fields you chose for lookup results and why" | Added exact price/stock tool-routing rules, introduced the typed `StockLookupResult`, and documented every tool's return type and field rationale in `output/harness.md`. | — | — |
+
+## Problem 7 — Chat search that updates the page
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "now we will have problem 7: Chat search that updates the page" | Started the Problem 7 section. | — | Detailed page-update behavior is still to be supplied. |
+| 2 | 2026-10-04 | "Now we will add a feature so that when a customer asks about a type of item, for example, \"whaat hoodies do you have\" the agent should search the catalogue and the website should dynamically show those matching items as product cards (image, name, price, short info) This is an API contract: the agent returns structured product matches and then th efront end renders them on the website." | Extended `ChatResponse` with typed `product_matches`, expanded `ProductSearchHit` with card fields, required category searches to populate matches, and wired the chat widget to render returned product cards. | — | — |
+| 3 | 2026-10-04 | "The dynamic product cards are loaded by your new feature, make sure the same single-item page behavior you built in problem 3 still works: each product card -- incluidng the ones the chat just put on the page -- should still open that detail view (large image + ful info) when clicked Update prompts/prompt.md and outputharness.md so it is clear how serach results reach the page" | Connected chat-result cards to the top-level product selection state, so clicking a chat card switches to Products and opens the existing single-item detail view. Updated the prompt and harness to document the shared `product_id` navigation contract. | — | — |
+
+## Problem 8
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Ok that is problem 7, now we will do problem 8" | Marked Problem 7 complete and started the Problem 8 section. | — | The Problem 8 requirements are still to be supplied. |
+| 2 | 2026-10-04 | "Problem 8; Customer memory" | Recorded the Problem 8 title. | — | Detailed customer-memory requirements are still to be supplied. |
+| 3 | 2026-10-04 | "When a shoper is logged in, save their chat hisotry in the database in an appropriate table and relad it when they return. The agent should know WHO is chatting (name, email) -- put that agent depts (or an equivalent clear pattern) and/or tools the agent can call Also pass enough page context that is someone is on a product page and asks \"do you have this in pink\" teh agent knows which item them mean -- heres a hint! Put code into the agent context" | Added logged-in chat persistence and history reload through `chat_messages`, server-resolved user identity in `AgentDeps`, and product-page context passed from React into the agent request. | — | Anonymous chats remain available but are not persisted. |
+| 4 | 2026-10-04 | "Guests can still chat, but history only needs to persist for logged-in users. Document in output/harness.md how user chat history is stored, what customer fields the agent sees and how page context is passed" | Expanded `output/harness.md` with the guest-versus-logged-in memory contract, stored message fields, agent-visible customer fields, and the product-page context payload. | — | — |
+
+## Problem 9 — Usability improvements
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Ok that was problem 8, lets do problem 9: Usability improvements" | Marked Problem 8 complete and started the Problem 9 section. | — | Detailed usability requirements are still to be supplied. |
+| 2 | 2026-10-04 | "Now that the core shop works, improve it. Open the website so I can see it and please list front-end usability improvemetns that I could do and backend/agent usability improvements that I could do." | Started the local FastAPI and Vite services and prepared a prioritized list of frontend and backend/agent usability improvements. | — | Browser launch was unavailable in the execution environment; the local URL is `http://127.0.0.1:5173/`. |
+| 3 | 2026-10-04 | "write outputt/usabilty.md before or as I build. For each of the improvements say what you added and why it helps a campus customs shopper or the buisness. Then make sure all improvements actually show up in the running app. graders will read the write-up and look for the features. For the frontend add loading, error and empty states for products and chat. You can do a cute little emoji when it is loading too. Add a shopping cart. add logout and logged-in account status. on the backend add clearer structured API error responses and pagination to chat history" | Added `outputt/usabilty.md` and a conventional `output/usability.md` pointer, implemented the requested frontend states, cart, account status/logout, structured FastAPI errors, and paginated chat history. | — | The frontend build and backend compilation were verified. |
+| 4 | 2026-10-04 | "can you also make it look more Yale-y" | Added a Yale visual refinement layer with Yale blue, navy ink, cream paper tones, collegiate serif typography, academic borders, and Yale-inspired product accents while preserving the pink gemstone brand identity. | — | — |
+
+## Problem 10 — Style the website
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Thanks! Now Problem 10: Style the website" | Started the Problem 10 section. | — | Detailed styling requirements are still to be supplied. |
+| 2 | 2026-10-04 | "add creative design so the site feels like a real Campus Customs storefront -- fonts, color, hierarchy, motion, product presenation, chat feel," | Added a storefront design layer with editorial typography, Yale/Campus Customs color hierarchy, product-card polish, hero and chat motion, tactile hover/focus states, and a reduced-motion accessibility fallback. Documented the design system in `output/harness.md`. | — | — |
+| 3 | 2026-10-04 | "This one has its typefaces: https://yaleidentity.yale.edu/core-identity-elements/yale-typefaces" | Updated the site to use YaleNew/Mallory-first typeface stacks with accessible local fallbacks and documented the refinement in the usability write-up. | — | — |
+| 4 | 2026-10-04 | "also can it be more chic" | Added a chic editorial refinement with quieter surfaces, more whitespace, sharper type scale, restrained borders, subtle gold accents, and tighter boutique-style navigation. | — | — |
+| 5 | 2026-10-04 | "No I don't want any pink" | Removed pink from the interface palette and replaced it with Yale blue, navy, cream, pale blue, white, and restrained gold accents. | — | — |
+| 6 | 2026-10-04 | "asymmetric grids, Bento grids, or multi-column data layouts instead of a single stack of cards" | Reworked the Products catalogue into a responsive asymmetric 12-column bento grid with larger feature tiles and smaller supporting product tiles. | — | — |
+| 7 | 2026-10-04 | "Make the layout more asymmetric and editorial" | Added an art-directed 12-column rhythm with alternating wide feature tiles, offset supporting tiles, varied image heights, and responsive tablet/mobile fallbacks. | — | — |
+| 8 | 2026-10-04 | "Act as an expert designer" / "all of those things you listed" | Added a full storefront art-direction pass across navigation, homepage, product grid, detail view, chat, cart, responsive behavior, focus states, and motion. Documented the coordinated design rationale in `outputt/usabilty.md`. | — | — |
+| 9 | 2026-10-04 | "Also the pictures fit so ugly make them fit better" | Changed catalogue, chat, and detail photography to preserve the full garment with contained image fitting, consistent neutral backgrounds, and breathing room; preserved the hero's intentional crop. | — | — |
+| 10 | 2026-10-04 | "write output/design.md with what you changed and why itll help customers stay around" | Created `output/design.md` with the design changes and customer-retention rationale for identity, hierarchy, product presentation, images, detail pages, chat, cart, account continuity, motion, and accessibility. | — | — |
+
+## Problem 11 — Site testing (app check)
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "test the live site and document it in output/app_check.html (a page you can double-click open) include clear screenshots and short captions for 1) chat checking the inventory level of an item (honestly stock/price from the DB) 2) the dynamic search result cards appears after a category question (eg. hoodies) 3. one of the usability features you added in problem 9" | Tested the running React + FastAPI app, captured database-backed inventory chat, dynamic hoodie product cards, and the shopping-cart empty state, then created `output/app_check.html` with relative links to `output/app_check_images/`. | — | The frontend build passed and the report is designed to open directly by double-clicking. |
+
+## Problem 12 — Audit trail, safety, finish harness
+
+| # | Date | What I typed to the vibe coder | What the vibe coder did / said | My follow-up or revision | Notes |
+|---|---|---|---|---|---|
+| 1 | 2026-10-04 | "Problem 12: Audit trail, safety, finish harness" | Added an internal SQLite audit trail for chat/tool outcomes, strengthened audit-aware safety guidance, documented the privacy boundary and final run commands in `output/harness.md`, and verified backend compilation, audit-table initialization, and the frontend production build. | — | Audit events store safe operational metadata only; secrets and raw private content are excluded. |
+| 2 | 2026-10-04 | "keep an append-only output/audit_trail.json of agent-loop activity (time, tool name, short args/result,stop reason) do not wipe it between runs. Also think of some safety rules to give the agent and put them in prompts/prompt.md finsih output/harness.md so it is clear how the system works - model fields in models.py and why you chose them - tools and abilities - safety rules -specs(loop limits, result caps, models, how to run front + back)" | Added append-only JSON Lines logging with time, tool name, short safe arguments/results, and stop reason; added the typed `AuditTrailEvent`; expanded safety rules and documented models, tools, abilities, limits, model choice, and frontend/backend run commands in `output/harness.md`. | — | `output/audit_trail.json` is opened in append mode and is never reset between runs. |

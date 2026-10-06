@@ -1,0 +1,23 @@
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+
+# Local/private homework data and product photography
+data/campus_customs.db
+data/products/
+frontend/public/data/campus_customs.db
+frontend/public/data/products/
+
+# Generated app output and dependencies
+.venv/
+__pycache__/
+*.py[cod]
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
